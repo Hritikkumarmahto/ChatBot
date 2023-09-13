@@ -1,2 +1,2 @@
 # ChatBot
-auther-Hritik Kumar Mahto
+Author-Hritik Kumar Mahto
