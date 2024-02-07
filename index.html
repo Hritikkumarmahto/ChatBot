@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Chatbot Demo</title>
+</head>
+<body>
+    <div id="chatbox">
+        <div id="chatlog"></div>
+        <input type="text" id="userInput" placeholder="Type your message...">
+        <button onclick="sendMessage()">Send</button>
+    </div>
+
+    <script>
+        async function sendMessage() {
+            const userInput = document.getElementById('userInput').value;
+            document.getElementById('chatlog').innerHTML += `<div>User: ${userInput}</div>`;
+            
+            const response = await fetch('https://github.com/Hritikkumarmahto/ChatBot.git', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ message: userInput })
+            });
+
+            const data = await response.json();
+            document.getElementById('chatlog').innerHTML += `<div>Chatbot: ${data.message}</div>`;
+        }
+    </script>
+</body>
+</html>
